@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TestTwo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_Doctor_fragment">hello_Doctor_fragment</string>
+    <string name="hello_Drugs_fragment">Hello Drugs fragment</string>
+    <string name="hello_Hospital_fragment">Hello Hospital fragment</string>
+    <string name="hello_Pharmacy_fragment">Hello Pharmacy fragment</string>
+    <string name="hello_Timer_fragment">Hello Timer fragment</string>
+
+</resources>

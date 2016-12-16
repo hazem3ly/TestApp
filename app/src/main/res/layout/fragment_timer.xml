@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#1e2025"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.testtwo.Fragments.TimerFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <include layout="@layout/toolbarlayout" android:id="@+id/toolbar">
+
+    </include>
+    <ImageView
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/timer_view"
+        android:src="@drawable/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ProgressBar
+        android:layout_alignStart="@id/timer_view"
+        android:layout_alignEnd="@id/timer_view"
+        android:layout_alignLeft="@id/timer_view"
+        android:layout_alignRight="@id/timer_view"
+        android:layout_alignTop="@id/timer_view"
+        android:layout_alignBottom="@id/timer_view"
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:indeterminate="false"
+        android:progressDrawable="@drawable/circular_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        />
+
+    <TextView
+        android:id="@+id/counter_text"
+        android:gravity="center"
+        android:text="00:00:00"
+        android:layout_alignStart="@id/timer_view"
+        android:layout_alignEnd="@id/timer_view"
+        android:layout_alignLeft="@id/timer_view"
+        android:layout_alignRight="@id/timer_view"
+        android:layout_alignTop="@id/timer_view"
+        android:layout_alignBottom="@id/timer_view"
+        android:textSize="45sp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="Left untill Your Next dose"
+        android:id="@+id/drug_name"
+        android:textSize="20sp"
+        android:textColor="#94d980"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/timer_view"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/drug_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="#616161"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+        <ImageView
+            android:src="@drawable/calender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            />
+        <View
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:background="#616161"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
