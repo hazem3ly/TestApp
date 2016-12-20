@@ -1,16 +1,22 @@
 package com.example.android.testtwo;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.example.android.testtwo.Adapters.myFragmentPagerAdapter;
+import com.example.android.testtwo.Events.MessageEvent;
 import com.example.android.testtwo.Fragments.DoctorFragment;
 import com.example.android.testtwo.Fragments.DrugsFragment;
 import com.example.android.testtwo.Fragments.HospitalFragment;
@@ -28,6 +34,9 @@ import static android.R.id.tabhost;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener,TabHost.OnTabChangeListener{
 
+    NotificationManager notificationManager;
+    NotificationCompat.Builder notification;
+    private static final int uniqueId = 1234;
     private ViewPager viewPager;
     private TabHost mTabHost;
 
@@ -35,6 +44,12 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notification = new NotificationCompat.Builder(this);
+        notification.setAutoCancel(true);
 
         EventBus.getDefault().register(this);
 
@@ -47,6 +62,20 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(MessageEvent event) {
+
+        notification.setSmallIcon(R.drawable.drugs);
+        notification.setTicker("this is ticker").
+                setContentText("this is time for " + event.message)
+                .setContentTitle("Drug Time").setWhen(System.currentTimeMillis());
+
+
+        Intent intent = new Intent(this,MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        notification.setContentIntent(pendingIntent);
+
+        notificationManager.notify(uniqueId,notification.build());
+
+
         Toast.makeText(this, event.message, Toast.LENGTH_SHORT).show();
     }
 

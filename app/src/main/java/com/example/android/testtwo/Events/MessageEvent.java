@@ -1,4 +1,4 @@
-package com.example.android.testtwo;
+package com.example.android.testtwo.Events;
 
 /**
  * Created by Hazem on 12/15/2016.
